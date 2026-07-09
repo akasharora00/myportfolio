@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme {
+  --color-vscode-bg: var(--vscode-bg);
+  --color-vscode-editor: var(--vscode-editor);
+  --color-vscode-sidebar: var(--vscode-sidebar);
+  --color-vscode-tabInactive: var(--vscode-tabInactive);
+  --color-vscode-tabActive: var(--vscode-tabActive);
+  --color-vscode-border: var(--vscode-border);
+  --color-vscode-card: var(--vscode-card);
+  --color-vscode-primary: var(--vscode-primary);
+  --color-vscode-secondary: var(--vscode-secondary);
+  --color-vscode-highlight: var(--vscode-highlight);
+  --color-vscode-textPrimary: var(--vscode-textPrimary);
+  --color-vscode-textSecondary: var(--vscode-textSecondary);
+  --color-vscode-statusBar: var(--vscode-statusBar);
+  --color-vscode-accentHover: var(--vscode-accentHover);
+}
+
+:root {
+  /* True AMOLED Dark Default */
+  --vscode-bg: #050505;
+  --vscode-editor: #0B0F17;
+  --vscode-sidebar: #0F1117;
+  --vscode-tabInactive: #0F1117;
+  --vscode-tabActive: #0B0F17;
+  --vscode-border: #23252E;
+  --vscode-card: #111827;
+  --vscode-primary: #3B82F6;
+  --vscode-secondary: #8B5CF6;
+  --vscode-highlight: #06B6D4;
+  --vscode-textPrimary: #F8FAFC;
+  --vscode-textSecondary: #94A3B8;
+  --vscode-statusBar: #3B82F6;
+  --vscode-accentHover: #2563EB;
+}
+
+.light {
+  /* Premium Light Mode */
+  --vscode-bg: #F8FAFC;
+  --vscode-editor: #FFFFFF;
+  --vscode-sidebar: #F1F5F9;
+  --vscode-tabInactive: #E2E8F0;
+  --vscode-tabActive: #FFFFFF;
+  --vscode-border: #E2E8F0;
+  --vscode-card: #F1F5F9;
+  --vscode-primary: #2563EB;
+  --vscode-secondary: #7C3AED;
+  --vscode-highlight: #0891B2;
+  --vscode-textPrimary: #0F172A;
+  --vscode-textSecondary: #475569;
+  --vscode-statusBar: #2563EB;
+  --vscode-accentHover: #1D4ED8;
+}
+
+/* Global color transition rule for smooth theme switches */
+*, *::before, *::after {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--vscode-bg);
+  color: var(--vscode-textPrimary);
+}
+
+/* Custom scrollbars mimicking VS Code */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(121, 121, 121, 0.25);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 100, 100, 0.5);
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: rgba(100, 100, 100, 0.1);
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 100, 100, 0.25);
+}
+
+/* Custom classes for syntax highlighting */
+.syntax-keyword { color: #8B5CF6; }
+.light .syntax-keyword { color: #7C3AED; }
+
+.syntax-key { color: #3B82F6; }
+.light .syntax-key { color: #2563EB; }
+
+.syntax-string { color: #10B981; }
+.light .syntax-string { color: #059669; }
+
+.syntax-number { color: #F59E0B; }
+.light .syntax-number { color: #D97706; }
+
+.syntax-comment { color: #64748B; }
+.light .syntax-comment { color: #94A3B8; }
+
+.syntax-punctuation { color: #94A3B8; }
+.light .syntax-punctuation { color: #475569; }
+
+/* Custom keyframes & utility classes for animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 24px 24px;
+  }
+}
+
+.animate-grid {
+  animation: grid-move 25s linear infinite;
+}
+
+/* Blinking terminal cursor animation */
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.animate-cursor {
+  animation: blink 0.8s step-end infinite;
+}

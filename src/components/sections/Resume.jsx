@@ -9,16 +9,16 @@ export default function Resume({ startLine = 141 }) {
   const lines = Array.from({ length: 30 }, (_, i) => i + startLine);
 
   return (
-    <div className="flex font-vscode">
+    <div className="flex font-vscode relative min-h-[calc(100vh-104px)]">
       {/* Line Numbers */}
-      <div className="hidden sm:flex flex-col text-right pr-4 pl-3 select-none text-vscode-textSecondary text-[11px] leading-6 border-r border-vscode-border/30 w-12 font-mono opacity-40 overflow-hidden min-h-0">
+      <div className="hidden sm:flex absolute left-0 top-0 bottom-0 w-12 flex-col text-right pr-4 pl-3 select-none text-vscode-textSecondary text-[11px] leading-6 border-r border-vscode-border/30 font-mono opacity-40 overflow-hidden">
         {lines.map((line) => (
           <div key={line}>{line}</div>
         ))}
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center px-6 py-5">
+      <div className="flex-1 flex items-center justify-center pl-6 sm:pl-16 pr-6 py-5">
 
         <div className="w-full max-w-md rounded-xl border border-vscode-border bg-vscode-card shadow-2xl overflow-hidden">
 

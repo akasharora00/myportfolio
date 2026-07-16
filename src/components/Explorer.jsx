@@ -109,7 +109,7 @@ export default function Explorer({
 
       {/* Explorer Tree Panel */}
       {explorerVisible && (
-        <div className="w-48 bg-vscode-sidebar border-r border-vscode-border flex flex-col h-full transition-all duration-300">
+        <div className="w-40 bg-vscode-sidebar border-r border-vscode-border flex flex-col h-full transition-all duration-300 animate-slide-in">
           {/* Panel Title */}
           <div className="h-10 px-4 flex items-center justify-between text-vscode-textSecondary uppercase font-bold tracking-wider text-[10px] border-b border-vscode-border/50">
             <span>Explorer</span>

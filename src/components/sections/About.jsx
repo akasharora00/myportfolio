@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { VscFilePdf } from 'react-icons/vsc';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { profile } from '../../data/profile';
+import React, { useState, useEffect } from "react";
+import { VscFilePdf } from "react-icons/vsc";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { profile } from "../../data/profile";
 
 function Typewriter() {
   const words = [
@@ -9,9 +9,9 @@ function Typewriter() {
     "Java Enthusiast",
     "AI / ML Learner",
     "UI/UX Designer",
-    "Canva Designer"
+    "Canva Designer",
   ];
-  
+
   const [currentWordIdx, setCurrentWordIdx] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -62,15 +62,25 @@ function AvatarImage() {
 
   if (hasError) {
     return (
-      <svg className="w-1/2 h-1/2 text-vscode-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+      <svg
+        className="w-1/2 h-1/2 text-vscode-primary"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
+        />
       </svg>
     );
   }
 
   return (
-    <img 
-      src="/profile/profile.jpg" 
+    <img
+      src="/profile/profile.png"
       alt="Akashdeep Profile"
       className="w-full h-full object-cover rounded-full shadow-[0_0_20px_rgba(59,130,246,0.3)]"
       onError={() => setHasError(true)}
@@ -80,9 +90,12 @@ function AvatarImage() {
 
 function TechAvatar() {
   return (
-    <div className="relative w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] flex items-center justify-center animate-float select-none">
+    <div className="relative w-[220px] h-[220px] sm:w-[360px] sm:h-[360px] flex items-center justify-center animate-float select-none">
       {/* Outer Rotating Dotted Circle */}
-      <svg className="absolute w-full h-full animate-[spin_25s_linear_infinite]" viewBox="0 0 100 100">
+      <svg
+        className="absolute w-full h-full animate-[spin_25s_linear_infinite]"
+        viewBox="0 0 100 100"
+      >
         <circle
           cx="50"
           cy="50"
@@ -122,12 +135,12 @@ export default function About({ activeFile, setActiveFile, startLine = 1 }) {
   const lines = Array.from({ length: 24 }, (_, i) => i + startLine);
 
   const handleResumeClick = () => {
-    if (activeFile === 'Resume.pdf') return;
-    const target = document.getElementById('resume-section');
+    if (activeFile === "Resume.pdf") return;
+    const target = document.getElementById("resume-section");
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    setActiveFile('Resume.pdf');
+    setActiveFile("Resume.pdf");
   };
 
   return (
@@ -144,29 +157,43 @@ export default function About({ activeFile, setActiveFile, startLine = 1 }) {
         {/* YAML metadata header block */}
         <div className="mb-6 font-mono text-[11px] text-vscode-textSecondary/80 select-none">
           <span className="text-vscode-secondary">---</span>
-          <div><span className="text-[#3b82f6]">title</span>: "Akashdeep Portfolio"</div>
-          <div><span className="text-[#3b82f6]">status</span>: "Available for Hire"</div>
+          <div>
+            <span className="text-[#3b82f6]">title</span>: "Akashdeep Portfolio"
+          </div>
+          <div>
+            <span className="text-[#3b82f6]">status</span>: "Available for Hire"
+          </div>
           <span className="text-vscode-secondary">---</span>
         </div>
 
         {/* Layout: Text + Avatar */}
-        <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-10 gap-8 md:gap-12 items-center md:items-start">
           {/* Bio text block */}
-          <div className="flex-1 w-full text-center md:text-left">
+          <div className="col-span-1 md:col-span-6 w-full text-center md:text-left">
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2 flex items-center justify-center md:justify-start font-prose text-vscode-textPrimary border-b border-vscode-border/30 pb-3">
-              <span className="text-vscode-primary mr-2 font-mono text-lg font-normal">#</span>
+              <span className="text-vscode-primary mr-2 font-mono text-lg font-normal">
+                #
+              </span>
               Hi, I'm {profile.name}
             </h1>
 
             {/* Subtitle with dynamic Typewriter */}
             <div className="h-8 mb-6 flex items-center justify-center md:justify-start font-mono text-sm sm:text-base">
-              <span className="text-vscode-textSecondary mr-2 font-mono text-xs sm:text-sm font-normal">##</span>
-              <span className="text-vscode-textPrimary mr-2 font-semibold">I am a</span>
+              <span className="text-vscode-textSecondary mr-2 font-mono text-xs sm:text-sm font-normal">
+                ##
+              </span>
+              <span className="text-vscode-textPrimary mr-2 font-semibold">
+                I am a
+              </span>
               <Typewriter />
             </div>
 
             <div className="p-4 bg-vscode-card border-l-4 border-vscode-primary rounded-sm mb-6 font-vscode text-xs sm:text-sm text-left">
-              <span className="font-semibold text-vscode-primary">⚡ Focus:</span> Building scalable, high-performance web applications and solving data structures and algorithms.
+              <span className="font-semibold text-vscode-primary">
+                ⚡ Focus:
+              </span>{" "}
+              Building scalable, high-performance web applications and solving
+              data structures and algorithms.
             </div>
 
             <p className="text-sm md:text-base text-vscode-textSecondary mb-8 text-left leading-relaxed">
@@ -175,15 +202,15 @@ export default function About({ activeFile, setActiveFile, startLine = 1 }) {
 
             {/* Re-designed rounded gradient glowing buttons */}
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              <button 
+              <button
                 onClick={handleResumeClick}
                 className="flex items-center space-x-2 px-5 py-2.5 bg-vscode-primary text-white font-mono text-xs font-semibold rounded-full hover:bg-gradient-to-r hover:from-vscode-primary hover:to-vscode-secondary hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer animate-none"
               >
                 <VscFilePdf className="w-4 h-4" />
                 <span>View Resume</span>
               </button>
-              
-              <a 
+
+              <a
                 href={profile.contact.github}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -193,7 +220,7 @@ export default function About({ activeFile, setActiveFile, startLine = 1 }) {
                 <span>GitHub</span>
               </a>
 
-              <a 
+              <a
                 href={profile.contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -206,13 +233,13 @@ export default function About({ activeFile, setActiveFile, startLine = 1 }) {
           </div>
 
           {/* Glowing rotating Avatar illustration */}
-          <div className="flex-shrink-0 mb-6 md:mb-0">
+          <div className="col-span-1 md:col-span-4 flex justify-center md:justify-end w-full mb-6 md:mb-0 md:translate-x-[-60px]">
             <TechAvatar />
           </div>
         </div>
 
         {/* Dynamic page map tags */}
-        {/* <div className="border-t border-vscode-border/30 pt-6 select-none">
+        <div className="border-t border-vscode-border/30 pt-6 select-none">
           <p className="text-[11px] font-mono text-vscode-textSecondary">
             // Navigate the workspace by selecting other files in the Explorer tree:
           </p>
@@ -227,7 +254,7 @@ export default function About({ activeFile, setActiveFile, startLine = 1 }) {
               Contact.jsx
             </button>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );

@@ -5,20 +5,20 @@ import {
   FaExternalLinkAlt,
 } from "react-icons/fa";
 
-export default function Resume() {
-  const lines = Array.from({ length: 30 }, (_, i) => i + 1);
+export default function Resume({ startLine = 141 }) {
+  const lines = Array.from({ length: 30 }, (_, i) => i + startLine);
 
   return (
-    <div className="flex h-full font-vscode">
+    <div className="flex font-vscode">
       {/* Line Numbers */}
-      <div className="hidden sm:flex flex-col text-right pr-4 pl-3 select-none text-vscode-textSecondary text-[11px] leading-6 border-r border-vscode-border/30 w-12 font-mono opacity-40">
+      <div className="hidden sm:flex flex-col text-right pr-4 pl-3 select-none text-vscode-textSecondary text-[11px] leading-6 border-r border-vscode-border/30 w-12 font-mono opacity-40 overflow-hidden min-h-0">
         {lines.map((line) => (
           <div key={line}>{line}</div>
         ))}
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto flex items-center justify-center px-6 py-10">
+      <div className="flex-1 flex items-center justify-center px-6 py-5">
 
         <div className="w-full max-w-md rounded-xl border border-vscode-border bg-vscode-card shadow-2xl overflow-hidden">
 

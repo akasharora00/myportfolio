@@ -1,21 +1,21 @@
 import React from 'react';
 import { skills } from '../../data/skills';
 
-export default function Skills() {
+export default function Skills({ startLine = 53 }) {
   // Generate line numbers for the gutter based on estimate line length
-  const lines = Array.from({ length: 40 }, (_, i) => i + 1);
+  const lines = Array.from({ length: 40 }, (_, i) => i + startLine);
 
   return (
-    <div className="flex h-full select-text font-vscode">
+    <div className="flex select-text font-vscode">
       {/* Editor Line Numbers Gutter */}
-      <div className="hidden sm:flex flex-col text-right pr-4 pl-3 select-none text-vscode-textSecondary text-[11px] leading-6 border-r border-vscode-border/30 w-12 font-mono text-opacity-50">
+      <div className="hidden sm:flex flex-col text-right pr-4 pl-3 select-none text-vscode-textSecondary text-[11px] leading-6 border-r border-vscode-border/30 w-12 font-mono text-opacity-50 overflow-hidden min-h-0 truncate">
         {lines.map((line) => (
           <div key={line}>{line}</div>
         ))}
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto px-6 py-4">
+      <div className="flex-1 px-6 py-5">
         {/* Comment block header */}
         <div className="mb-4 font-mono text-xs text-vscode-textSecondary select-none">
           <span className="syntax-comment">// src/data/skills.json</span>

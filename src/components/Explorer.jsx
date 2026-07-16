@@ -9,6 +9,7 @@ import { FaFilePdf, FaReact } from 'react-icons/fa';
 export default function Explorer({ 
   activeFile, 
   setActiveFile, 
+  onNavigate,
   isOpen, 
   setIsOpen, 
   explorerVisible, 
@@ -20,12 +21,17 @@ export default function Explorer({
     { name: 'About.md', icon: <VscMarkdown className="text-[#3891d6] w-[18px] h-[18px] transition-transform duration-200 group-hover:scale-110" /> },
     { name: 'Projects.jsx', icon: <FaReact className="text-[#00d8ff] w-[18px] h-[18px] transition-transform duration-200 group-hover:scale-110" /> },
     { name: 'Skills.json', icon: <VscJson className="text-[#cbcb41] w-[18px] h-[18px] transition-transform duration-200 group-hover:scale-110" /> },
+    { name: 'Experience.ts', icon: <VscCode className="text-[#3178c6] w-[18px] h-[18px] transition-transform duration-200 group-hover:scale-110" /> },
     { name: 'Resume.pdf', icon: <FaFilePdf className="text-[#e2574c] w-[16px] h-[16px] transition-transform duration-200 group-hover:scale-110" /> },
     { name: 'Contact.jsx', icon: <FaReact className="text-[#00d8ff] w-[18px] h-[18px] transition-transform duration-200 group-hover:scale-110" /> }
   ];
 
   const handleFileClick = (filename) => {
-    setActiveFile(filename);
+    if (onNavigate) {
+      onNavigate(filename);
+    } else {
+      setActiveFile(filename);
+    }
     if (window.innerWidth < 1024) {
       setIsOpen(false); // Close mobile drawer
     }

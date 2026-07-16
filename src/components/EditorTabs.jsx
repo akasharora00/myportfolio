@@ -3,13 +3,14 @@ import { motion } from 'framer-motion';
 import { VscMarkdown, VscJson, VscCode } from 'react-icons/vsc';
 import { FaFilePdf, FaReact } from 'react-icons/fa';
 
-export default function EditorTabs({ activeFile, setActiveFile }) {
+export default function EditorTabs({ activeFile, setActiveFile, onNavigate }) {
   const tabsContainerRef = useRef(null);
 
   const tabs = [
     { name: 'About.md', icon: <VscMarkdown className="text-[#3891d6] w-3.5 h-3.5" /> },
     { name: 'Projects.jsx', icon: <FaReact className="text-[#00d8ff] w-3.5 h-3.5" /> },
     { name: 'Skills.json', icon: <VscJson className="text-[#cbcb41] w-3.5 h-3.5" /> },
+    { name: 'Experience.ts', icon: <VscCode className="text-[#3178c6] w-3.5 h-3.5" /> },
     { name: 'Resume.pdf', icon: <FaFilePdf className="text-[#e2574c] w-3.5 h-3.5" /> },
     { name: 'Contact.jsx', icon: <FaReact className="text-[#00d8ff] w-3.5 h-3.5" /> }
   ];
@@ -24,10 +25,18 @@ export default function EditorTabs({ activeFile, setActiveFile }) {
     }
   }, [activeFile]);
 
+  const handleTabClick = (filename) => {
+    if (onNavigate) {
+      onNavigate(filename);
+    } else {
+      setActiveFile(filename);
+    }
+  };
+
   return (
     <div 
       ref={tabsContainerRef}
-      className="h-10 bg-vscode-sidebar border-b border-vscode-border flex items-center overflow-x-auto select-none text-[11px] md:text-xs font-vscode"
+      className="h-10 bg-vscode-sidebar border-b border-vscode-border flex items-center overflow-x-auto select-none text-[11px] md:text-xs font-vscode shrink-0"
       style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
     >
       <div className="flex h-full">
@@ -37,7 +46,7 @@ export default function EditorTabs({ activeFile, setActiveFile }) {
             <button
               key={tab.name}
               data-active={isActive}
-              onClick={() => setActiveFile(tab.name)}
+              onClick={() => handleTabClick(tab.name)}
               className={`h-full px-4 flex items-center border-r border-vscode-border cursor-pointer relative group transition-all duration-300 ${
                 isActive 
                   ? 'bg-vscode-editor text-vscode-textPrimary font-semibold opacity-100 shadow-[inset_0_2px_0_0_#3B82F6]' 

@@ -7,10 +7,9 @@ function Typewriter() {
   const words = [
     "Full Stack Developer",
     "Java Enthusiast",
+    "AI / ML Learner",
     "UI/UX Designer",
-    "Canva Designer",
-    "Problem Solver",
-    "MERN Stack Developer"
+    "Canva Designer"
   ];
   
   const [currentWordIdx, setCurrentWordIdx] = useState(0);
@@ -58,9 +57,30 @@ function Typewriter() {
   );
 }
 
+function AvatarImage() {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    return (
+      <svg className="w-1/2 h-1/2 text-vscode-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+      </svg>
+    );
+  }
+
+  return (
+    <img 
+      src="/profile/profile.jpg" 
+      alt="Akashdeep Profile"
+      className="w-full h-full object-cover rounded-full shadow-[0_0_20px_rgba(59,130,246,0.3)]"
+      onError={() => setHasError(true)}
+    />
+  );
+}
+
 function TechAvatar() {
   return (
-    <div className="relative w-40 h-40 sm:w-56 sm:h-56 flex items-center justify-center animate-float select-none">
+    <div className="relative w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] flex items-center justify-center animate-float select-none">
       {/* Outer Rotating Dotted Circle */}
       <svg className="absolute w-full h-full animate-[spin_25s_linear_infinite]" viewBox="0 0 100 100">
         <circle
@@ -88,33 +108,39 @@ function TechAvatar() {
 
       {/* Inner Avatar Ring */}
       <div className="absolute w-[70%] h-[70%] rounded-full bg-vscode-card border border-vscode-border flex items-center justify-center overflow-hidden shadow-[0_0_30px_rgba(59,130,246,0.25)]">
-        {/* Sleek Programmer/Coding brackets SVG */}
-        <svg className="w-1/2 h-1/2 text-vscode-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-        </svg>
+        <AvatarImage />
       </div>
 
       {/* Glowing Orbiting particles */}
-      <div className="absolute top-4 left-1/2 w-2 h-2 rounded-full bg-vscode-primary shadow-[0_0_8px_#3B82F6] animate-ping"></div>
-      <div className="absolute bottom-4 right-1/2 w-1.5 h-1.5 rounded-full bg-vscode-secondary shadow-[0_0_8px_#8B5CF6] animate-ping delay-1000"></div>
+      <div className="absolute top-[9%] left-1/2 w-2 h-2 rounded-full bg-vscode-primary shadow-[0_0_8px_#3B82F6] animate-ping"></div>
+      <div className="absolute bottom-[9%] right-1/2 w-1.5 h-1.5 rounded-full bg-vscode-secondary shadow-[0_0_8px_#8B5CF6] animate-ping delay-1000"></div>
     </div>
   );
 }
 
-export default function About({ setActiveFile }) {
-  const lines = Array.from({ length: 24 }, (_, i) => i + 1);
+export default function About({ activeFile, setActiveFile, startLine = 1 }) {
+  const lines = Array.from({ length: 24 }, (_, i) => i + startLine);
+
+  const handleResumeClick = () => {
+    if (activeFile === 'Resume.pdf') return;
+    const target = document.getElementById('resume-section');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setActiveFile('Resume.pdf');
+  };
 
   return (
-    <div className="flex h-full select-text font-vscode">
+    <div className="flex select-text font-vscode">
       {/* Editor Line Numbers Gutter */}
-      <div className="hidden sm:flex flex-col text-right pr-4 pl-3 select-none text-vscode-textSecondary text-[11px] leading-6 border-r border-vscode-border/30 w-12 font-mono text-opacity-40">
+      <div className="hidden sm:flex flex-col text-right pr-4 pl-3 select-none text-vscode-textSecondary text-[11px] leading-6 border-r border-vscode-border/30 w-12 font-mono text-opacity-40 overflow-hidden min-h-0">
         {lines.map((line) => (
           <div key={line}>{line}</div>
         ))}
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto px-6 py-5 font-prose leading-relaxed text-vscode-textPrimary max-w-5xl">
+      <div className="flex-1 px-6 py-5 font-prose leading-relaxed text-vscode-textPrimary max-w-none">
         {/* YAML metadata header block */}
         <div className="mb-6 font-mono text-[11px] text-vscode-textSecondary/80 select-none">
           <span className="text-vscode-secondary">---</span>
@@ -124,7 +150,7 @@ export default function About({ setActiveFile }) {
         </div>
 
         {/* Layout: Text + Avatar */}
-        <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-8 mb-8">
+        <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-8">
           {/* Bio text block */}
           <div className="flex-1 w-full text-center md:text-left">
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2 flex items-center justify-center md:justify-start font-prose text-vscode-textPrimary border-b border-vscode-border/30 pb-3">
@@ -135,7 +161,7 @@ export default function About({ setActiveFile }) {
             {/* Subtitle with dynamic Typewriter */}
             <div className="h-8 mb-6 flex items-center justify-center md:justify-start font-mono text-sm sm:text-base">
               <span className="text-vscode-textSecondary mr-2 font-mono text-xs sm:text-sm font-normal">##</span>
-              <span className="text-vscode-textPrimary mr-2 font-semibold">I am</span>
+              <span className="text-vscode-textPrimary mr-2 font-semibold">I am a</span>
               <Typewriter />
             </div>
 
@@ -150,7 +176,7 @@ export default function About({ setActiveFile }) {
             {/* Re-designed rounded gradient glowing buttons */}
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <button 
-                onClick={() => setActiveFile('Resume.pdf')}
+                onClick={handleResumeClick}
                 className="flex items-center space-x-2 px-5 py-2.5 bg-vscode-primary text-white font-mono text-xs font-semibold rounded-full hover:bg-gradient-to-r hover:from-vscode-primary hover:to-vscode-secondary hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer animate-none"
               >
                 <VscFilePdf className="w-4 h-4" />
@@ -180,13 +206,13 @@ export default function About({ setActiveFile }) {
           </div>
 
           {/* Glowing rotating Avatar illustration */}
-          <div className="flex-shrink-0 mb-6 md:mb-0">
+          <div className="flex-shrink-0 mb-6 md:mb-0 md:translate-x-[50px]">
             <TechAvatar />
           </div>
         </div>
 
         {/* Dynamic page map tags */}
-        <div className="border-t border-vscode-border/30 pt-6 select-none">
+        {/* <div className="border-t border-vscode-border/30 pt-6 select-none">
           <p className="text-[11px] font-mono text-vscode-textSecondary">
             // Navigate the workspace by selecting other files in the Explorer tree:
           </p>
@@ -201,7 +227,7 @@ export default function About({ setActiveFile }) {
               Contact.jsx
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

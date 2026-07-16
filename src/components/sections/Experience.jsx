@@ -63,7 +63,7 @@ function ImageCarousel({ images, title, onImageClick }) {
   };
 
   return (
-    <div className="relative w-full aspect-video sm:h-36 md:h-36 lg:h-36 xl:h-40 bg-[#050505] rounded-lg border border-vscode-border hover:border-vscode-primary/50 overflow-hidden group shadow-md hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all duration-300">
+    <div className="relative w-full aspect-video lg:h-36 xl:h-40 bg-[#050505] rounded-lg border border-vscode-border hover:border-vscode-primary/50 overflow-hidden group shadow-md hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all duration-300">
       
       {/* Click target for opening Lightbox */}
       <div 
@@ -129,9 +129,12 @@ export default function Experience({ startLine = 93 }) {
       file: "NSS.ts",
       description: "Supervised and coordinated the technical division. Architected administrative portals, registration tools, and data dashboards for service tracking.",
       images: [
-        "",
-        "/experience/nss2.jpg",
-        "/experience/nss3.jpg"
+        "/experience/nss1.png",
+        "/experience/nss2.png",
+        "/experience/nss3.png",
+        "/experience/nss4.png",
+        "/experience/nss5.png",
+        "/experience/nss6.png",
       ]
     },
     {
@@ -271,11 +274,11 @@ export default function Experience({ startLine = 93 }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center group"
-            >
-              
-              {/* Row Left section: Timeline Year + Nodes + Card */}
-              <div className="md:col-span-8 flex items-start gap-4">
+            className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center group"
+          >
+            
+            {/* Row Left section: Timeline Year + Nodes + Card */}
+            <div className="order-2 lg:order-1 lg:col-span-8 flex items-start gap-4 w-full">
                 
                 {/* Year tag */}
                 <span className="w-14 text-right font-mono text-xs text-vscode-textSecondary font-semibold select-none pt-2 shrink-0">
@@ -333,8 +336,8 @@ export default function Experience({ startLine = 93 }) {
                 </div>
               </div>
 
-              {/* Row Right section: Image Carousel Gallery */}
-              <div className="pl-[78px] md:pl-0 md:col-span-4">
+            {/* Row Right section: Image Carousel Gallery */}
+            <div className="order-1 lg:order-2 pl-[78px] lg:pl-0 lg:col-span-4 w-full">
                 <ImageCarousel 
                   images={item.images} 
                   title={item.role} 

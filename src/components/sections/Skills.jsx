@@ -23,7 +23,7 @@ export default function Skills({ startLine = 53 }) {
           <span className="syntax-comment">// Syntax-highlighted technical skillset</span>
         </div>
 
-        <pre className="font-mono text-[11px] sm:text-xs md:text-sm leading-6 whitespace-pre text-vscode-textPrimary select-text">
+        <pre className="font-mono text-[11px] sm:text-xs md:text-sm leading-6 whitespace-pre text-vscode-textPrimary select-text overflow-x-auto">
           <span className="syntax-punctuation">{'{'}</span>
           {"\n  "}
           <span className="syntax-key">"languages"</span>

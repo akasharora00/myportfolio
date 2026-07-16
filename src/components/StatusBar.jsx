@@ -46,10 +46,10 @@ export default function StatusBar() {
         <div className="hover:bg-white/10 px-3 h-full flex items-center transition-colors cursor-pointer hidden md:flex">
           UTF-8
         </div>
-        <div className="hover:bg-white/10 px-3 h-full flex items-center transition-colors cursor-pointer">
+        <div className="hover:bg-white/10 px-3 h-full flex items-center transition-colors cursor-pointer hidden sm:flex">
           React
         </div>
-        <div className="hover:bg-white/10 px-3 h-full flex items-center transition-colors cursor-pointer">
+        <div className="hover:bg-white/10 px-3 h-full flex items-center transition-colors cursor-pointer hidden sm:flex">
           Tailwind
         </div>
         <div className="hover:bg-white/10 px-3 h-full flex items-center transition-colors cursor-pointer hidden sm:flex font-medium">

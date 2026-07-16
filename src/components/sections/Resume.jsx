@@ -113,7 +113,7 @@ export default function Resume({ startLine = 141 }) {
 
             {/* Buttons */}
 
-            <div className="mt-8 flex gap-3">
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
 
               <a
                 href="/resume.pdf"

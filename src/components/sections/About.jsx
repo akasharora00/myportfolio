@@ -167,10 +167,10 @@ export default function About({ activeFile, setActiveFile, startLine = 1 }) {
         </div>
 
         {/* Layout: Text + Avatar */}
-        <div className="grid grid-cols-1 md:grid-cols-10 gap-8 md:gap-12 items-center md:items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-10 gap-8 lg:gap-12 items-center lg:items-start">
           {/* Bio text block */}
-          <div className="col-span-1 md:col-span-6 w-full text-center md:text-left">
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2 flex items-center justify-center md:justify-start font-prose text-vscode-textPrimary border-b border-vscode-border/30 pb-3">
+          <div className="order-2 lg:order-1 col-span-1 lg:col-span-6 w-full text-center lg:text-left">
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2 flex items-center justify-center lg:justify-start font-prose text-vscode-textPrimary border-b border-vscode-border/30 pb-3">
               <span className="text-vscode-primary mr-2 font-mono text-lg font-normal">
                 #
               </span>
@@ -178,7 +178,7 @@ export default function About({ activeFile, setActiveFile, startLine = 1 }) {
             </h1>
 
             {/* Subtitle with dynamic Typewriter */}
-            <div className="h-8 mb-6 flex items-center justify-center md:justify-start font-mono text-sm sm:text-base">
+            <div className="h-8 mb-6 flex items-center justify-center lg:justify-start font-mono text-sm sm:text-base">
               <span className="text-vscode-textSecondary mr-2 font-mono text-xs sm:text-sm font-normal">
                 ##
               </span>
@@ -192,8 +192,7 @@ export default function About({ activeFile, setActiveFile, startLine = 1 }) {
               <span className="font-semibold text-vscode-primary">
                 ⚡ Focus:
               </span>{" "}
-              Building scalable, high-performance web applications and solving
-              data structures and algorithms.
+              Engineering high-performance, scalable web applications while mastering data structures, algorithms, and modern software architecture.
             </div>
 
             <p className="text-sm md:text-base text-vscode-textSecondary mb-8 text-left leading-relaxed">
@@ -201,7 +200,7 @@ export default function About({ activeFile, setActiveFile, startLine = 1 }) {
             </p>
 
             {/* Re-designed rounded gradient glowing buttons */}
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <button
                 onClick={handleResumeClick}
                 className="flex items-center space-x-2 px-5 py-2.5 bg-vscode-primary text-white font-mono text-xs font-semibold rounded-full hover:bg-gradient-to-r hover:from-vscode-primary hover:to-vscode-secondary hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer animate-none"
@@ -233,13 +232,13 @@ export default function About({ activeFile, setActiveFile, startLine = 1 }) {
           </div>
 
           {/* Glowing rotating Avatar illustration */}
-          <div className="col-span-1 md:col-span-4 flex justify-center md:justify-end w-full mb-6 md:mb-0 md:translate-x-[-60px]">
+          <div className="order-1 lg:order-2 col-span-1 lg:col-span-4 flex justify-center lg:justify-end w-full mb-6 lg:mb-0 lg:translate-x-[-60px]">
             <TechAvatar />
           </div>
         </div>
 
         {/* Dynamic page map tags */}
-        <div className="border-t border-vscode-border/30 pt-6 select-none">
+        {/* <div className="border-t border-vscode-border/30 pt-6 select-none">
           <p className="text-[11px] font-mono text-vscode-textSecondary">
             // Navigate the workspace by selecting other files in the Explorer tree:
           </p>
@@ -254,7 +253,7 @@ export default function About({ activeFile, setActiveFile, startLine = 1 }) {
               Contact.jsx
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
